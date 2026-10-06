@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# akhilsingh.dev
 
-## Getting Started
+Personal site. Next.js (App Router) built as a static export and hosted on Cloudflare Pages.
 
-First, run the development server:
+The site is reachable by link but kept out of search engines: every page sends a
+`noindex, nofollow` robots meta tag (`src/app/layout.tsx`) and an `X-Robots-Tag`
+header (`public/_headers`).
+
+## Local development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # writes the static site to out/
+npx serve out    # preview the exact files that get deployed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Content lives at the top of `src/app/page.tsx`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy (Cloudflare Pages)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+One-time setup in the Cloudflare dashboard:
 
-## Learn More
+1. Workers & Pages → Create → Pages → Connect to Git → pick this repo.
+2. Framework preset: **Next.js (Static HTML Export)**
+   - Build command: `npx next build`
+   - Build output directory: `out`
+3. Save and deploy. Node version comes from `.node-version`.
+4. Project → Custom domains → add `akhilsingh.dev`.
 
-To learn more about Next.js, take a look at the following resources:
+After that, every push to `main` deploys to production and every PR gets a preview URL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Static export limits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No API routes that read the request, Server Actions, middleware/proxy, ISR, or default
+`next/image` optimization. For a contact form, use a hosted form service or a Pages Function.
