@@ -15,6 +15,7 @@ export const edith = {
   name: "EDITH",
   expansion: "Even Dead I'm The Hero",
   href: `${github}/EDITH`,
+  license: "MIT",
   firstCommit: "2026-07-05T19:58:33+05:30",
   summary:
     "A local-first, voice-first AI presence for macOS. EDITH remembers your projects and working style, watches your dev sessions, and takes action on your behalf. Everything runs inside one daemon: edithd.",

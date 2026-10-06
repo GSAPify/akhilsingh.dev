@@ -201,6 +201,7 @@ function Edith() {
           <div className="flex flex-col gap-6">
             <div className="flex flex-wrap items-center gap-3">
               <StatusPill status="building" />
+              <span className="label text-green">Open source · {edith.license}</span>
               <span className="label">Python · macOS · local-first</span>
             </div>
             <div>
