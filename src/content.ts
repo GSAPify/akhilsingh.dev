@@ -186,15 +186,6 @@ export const process = [
   },
 ];
 
-export const eventLog = [
-  { tag: "EDITH", text: "Slice 06 desktop control: core done" },
-  { tag: "EDITH", text: "launchd LaunchAgent: always-on at login" },
-  { tag: "EDITH", text: "Menu-bar control app over the unix socket" },
-  { tag: "OHLCV", text: "ASan/UBSan across the suite, TSan on the ring" },
-  { tag: "MACH", text: "Live mic and tab-audio visuals on /live" },
-  { tag: "ISAAC", text: "Rust vision-inference loads exported ONNX" },
-];
-
 export const contact = [
   { label: "GitHub", href: github },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/akhil-singh-/" },
