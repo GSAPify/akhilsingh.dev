@@ -1,26 +1,159 @@
 @import "tailwindcss";
 
+/* Mission-control palette. Dark only: the HUD look depends on it. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #04070b;
+  --panel: rgba(10, 18, 28, 0.72);
+  --line: rgba(110, 200, 255, 0.14);
+  --line-strong: rgba(110, 200, 255, 0.32);
+  --fg: #e4f1ff;
+  --muted: #7d8ea4;
+  --cyan: #3ee6ff;
+  --violet: #a78bfa;
+  --amber: #ffb547;
+  --green: #3dff9a;
+  color-scheme: dark;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-muted: var(--muted);
+  --color-cyan: var(--cyan);
+  --color-violet: var(--violet);
+  --color-amber: var(--amber);
+  --color-green: var(--green);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(62, 230, 255, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 10%, rgba(167, 139, 250, 0.10), transparent 60%),
+    var(--bg);
+  color: var(--fg);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Blueprint grid behind everything. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%);
+  opacity: 0.5;
+}
+
+::selection {
+  background: rgba(62, 230, 255, 0.3);
+}
+
+:focus-visible {
+  outline: 1px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* Panel with cyan corner brackets, drawn as 8 gradient strokes. */
+  .hud {
+    --c: var(--cyan);
+    --s: 12px;
+    position: relative;
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(var(--c), var(--c)) top left / var(--s) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) top left / 1px var(--s) no-repeat,
+      linear-gradient(var(--c), var(--c)) top right / var(--s) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) top right / 1px var(--s) no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom left / var(--s) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom left / 1px var(--s) no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom right / var(--s) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom right / 1px var(--s) no-repeat,
+      var(--panel);
+    backdrop-filter: blur(6px);
+  }
+  .hud-violet {
+    --c: var(--violet);
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .glow-cyan {
+    text-shadow: 0 0 18px rgba(62, 230, 255, 0.55);
+  }
+  .glow-violet {
+    text-shadow: 0 0 18px rgba(167, 139, 250, 0.55);
+  }
+}
+
+/* Live status dot. */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 currentColor;
+    opacity: 1;
+  }
+  70% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+.pulse {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+/* Packet travelling along the assembly line. */
+@keyframes travel {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+.packet {
+  animation: travel 4s linear infinite;
+}
+
+/* Latency bars grow in once. */
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+.bar {
+  transform-origin: left;
+  animation: grow 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .pulse,
+  .packet,
+  .bar {
+    animation: none;
+  }
 }
