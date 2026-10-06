@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import { type Status, statusLabel } from "@/content";
 
 const statusColor: Record<Status, string> = {
-  shipped: "text-green",
-  building: "text-cyan",
-  rnd: "text-violet",
-  queued: "text-amber",
+  shipped: "text-foreground",
+  building: "text-foreground",
+  rnd: "text-muted",
+  queued: "text-muted",
 };
 
 export function StatusDot({ status }: { status: Status }) {
@@ -40,7 +40,7 @@ export function PanelHeader({ children, right }: { children: ReactNode; right?: 
 export function SectionHeading({ kicker, title }: { kicker: string; title: string }) {
   return (
     <div className="flex flex-col gap-3">
-      <span className="label text-cyan!">{kicker}</span>
+      <span className="label">{kicker}</span>
       <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">{title}</h2>
     </div>
   );

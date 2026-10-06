@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Akhil Singh · Software Factory",
+  title: "Akhil Singh",
   description:
-    "A software factory building AI systems, low-latency infrastructure and developer tools. Home of EDITH and ohlcv-validator.",
+    "AI systems, low-latency infrastructure and developer tools. Home of EDITH and ohlcv-validator.",
   // Link-only site: keep it out of search results. public/_headers sends the
   // same directive as an X-Robots-Tag header.
   robots: { index: false, follow: false },

@@ -15,6 +15,7 @@ export const edith = {
   name: "EDITH",
   expansion: "Even Dead I'm The Hero",
   href: `${github}/EDITH`,
+  license: "MIT",
   firstCommit: "2026-07-05T19:58:33+05:30",
   summary:
     "A local-first, voice-first AI presence for macOS. EDITH remembers your projects and working style, watches your dev sessions, and takes action on your behalf. Everything runs inside one daemon: edithd.",
@@ -183,15 +184,6 @@ export const process = [
     name: "Record",
     detail: "Each slice closes with a completion record. Limitations get written down.",
   },
-];
-
-export const eventLog = [
-  { tag: "EDITH", text: "Slice 06 desktop control: core done" },
-  { tag: "EDITH", text: "launchd LaunchAgent: always-on at login" },
-  { tag: "EDITH", text: "Menu-bar control app over the unix socket" },
-  { tag: "OHLCV", text: "ASan/UBSan across the suite, TSan on the ring" },
-  { tag: "MACH", text: "Live mic and tab-audio visuals on /live" },
-  { tag: "ISAAC", text: "Rust vision-inference loads exported ONNX" },
 ];
 
 export const contact = [
