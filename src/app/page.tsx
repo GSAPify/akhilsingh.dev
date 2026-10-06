@@ -95,14 +95,13 @@ function Hero() {
             <StatusDot status="building" />
             Software factory · built in the open
           </span>
-          <h1 className="text-4xl leading-[1.05] font-semibold tracking-tight sm:text-6xl">
-            Specs in.
-            <br />
-            <span className="glow-cyan text-cyan">Tested software out.</span>
+          <h1 className="text-3xl leading-[1.1] font-semibold tracking-tight sm:text-[2.75rem] lg:text-[2.5rem]">
+            We build things that work.
+            <span className="glow-cyan block text-balance text-cyan">And write down the bits that don&apos;t.</span>
           </h1>
           <p className="max-w-xl text-base leading-7 text-muted sm:text-lg">
-            We build AI systems, low-latency infrastructure and developer tools. Every product
-            ships in vertical slices, test-first, with its limits written down.
+            AI systems, low-latency infrastructure and developer tools. Shipped in small slices,
+            tests first, benchmarks when it matters.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
