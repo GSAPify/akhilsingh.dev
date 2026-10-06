@@ -45,12 +45,8 @@ function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-4 font-mono text-[0.6875rem] tracking-widest uppercase">
-          <span className="hidden text-muted sm:inline">
+          <span className="text-muted">
             UTC <span className="text-foreground tabular-nums"><Clock timeZone="UTC" /></span>
-          </span>
-          <span className="flex items-center gap-2 text-green">
-            <StatusDot status="shipped" />
-            Online
           </span>
         </div>
       </div>
@@ -74,7 +70,7 @@ function Hero() {
       className="mx-auto grid w-full max-w-7xl gap-4 px-4 pt-8 pb-16 sm:px-6 lg:grid-cols-[260px_1fr_280px] lg:pt-12"
     >
       <aside className="hud order-2 self-start lg:order-1">
-        <PanelHeader right={<span className="label text-green">Live</span>}>
+        <PanelHeader>
           Factory telemetry
         </PanelHeader>
         <dl className="divide-y divide-line">
@@ -268,7 +264,8 @@ function Edith() {
             {edith.subsystems.map((sub) => (
               <li key={sub.name} className="flex flex-col gap-2 bg-background p-4">
                 <span className="flex items-center gap-2 font-mono text-xs tracking-widest text-cyan uppercase">
-                  <StatusDot status="shipped" />
+                  {/* Amber matches the build sheet: core done, live hardware smoke pending. */}
+                  <StatusDot status={sub.core ? "queued" : "shipped"} />
                   {sub.name}
                 </span>
                 <span className="text-sm leading-6 text-muted">{sub.detail}</span>
