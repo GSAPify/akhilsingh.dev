@@ -1,4 +1,4 @@
-// Every figure here is copied from the product's own README. Update both together.
+// Every figure here comes from the product's own README or git history. Update both together.
 
 export type Status = "shipped" | "building" | "rnd" | "queued";
 
@@ -29,6 +29,7 @@ export const edith = {
   subsystems: [
     {
       name: "Voice loop",
+      core: true,
       detail: "Wake word, speech-to-text and text-to-speech. ElevenLabs or local Piper.",
     },
     {
@@ -53,6 +54,7 @@ export const edith = {
     },
     {
       name: "Desktop control",
+      core: true,
       detail: "Launches apps and drives terminals through osascript and open.",
     },
     {
@@ -117,7 +119,7 @@ export const ohlcv = {
       detail: "The measured path reads fixed-stride 88-byte records straight from mmap. No parse, no copy.",
     },
   ],
-  pipeline: ["Line A + B", "FeedArbitrator", "WireRecord", "Validator", "L2 book"],
+  pipeline: ["Line A + B", "FeedArbitrator", "WireRecord", "Validator", "Violations"],
 };
 
 export const products = [
@@ -140,7 +142,7 @@ export const products = [
     summary:
       "Portable agent skills: concise procedures for how a coding agent should work, with validate, install and doctor tooling.",
     headline: { value: "7", unit: "original skills", note: "Agent Skills" },
-    metrics: ["Validate · install · doctor", "User or project scope", "Builds a portable archive"],
+    metrics: ["Validate · install · doctor", "Claude Code and Cursor", "User or project scope"],
     href: `${github}/akhil-skills`,
   },
   {
@@ -151,7 +153,7 @@ export const products = [
     summary:
       "Sim-to-real 6-DoF object pose estimation around Isaac Sim and YCB objects, with a Rust crate for fast ONNX inference.",
     headline: { value: "6-DoF", unit: "pose tracking", note: "Isaac Sim" },
-    metrics: ["Synthetic data pipeline", "YOLO to ONNX export", "Rust vision-inference"],
+    metrics: ["Target: YCB sim-to-real", "YOLO to ONNX export", "Rust vision-inference"],
     href: `${github}/IsacxAkhil`,
   },
 ];
