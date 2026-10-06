@@ -58,13 +58,17 @@ function Hero() {
     >
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-5">
-          <h1 className="text-3xl leading-[1.1] font-semibold tracking-tight sm:text-5xl">
-            We build things that work.
-            <span className="block text-balance text-muted">And write down the bits that don&apos;t.</span>
-          </h1>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Akhil Singh</h1>
+            <p className="label">AI engineer · Pune, India</p>
+          </div>
           <p className="max-w-xl text-base leading-7 text-muted sm:text-lg">
-            AI systems, low-latency infrastructure and developer tools. Shipped in small slices,
-            tests first, benchmarks when it matters.
+            I build AI systems and the infrastructure underneath them: voice assistants, retrieval
+            pipelines, and C++ that gets measured in nanoseconds. Most of my day-to-day work lives
+            in private repos. This is the open-source side.
+          </p>
+          <p className="max-w-xl text-sm leading-6 text-muted">
+            Off the keyboard: national cross-country mountain biking champion, 2021.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
