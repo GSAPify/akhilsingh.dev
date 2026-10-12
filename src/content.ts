@@ -11,7 +11,12 @@ export const statusLabel: Record<Status, string> = {
 
 export const github = "https://github.com/GSAPify";
 
+export function projectHref(slug: string) {
+  return `/projects/${slug}/`;
+}
+
 export const edith = {
+  slug: "edith",
   name: "EDITH",
   expansion: "Even Dead I'm The Hero",
   href: `${github}/EDITH`,
@@ -76,6 +81,7 @@ export const edith = {
 };
 
 export const ohlcv = {
+  slug: "ohlcv-validator",
   line: "02",
   name: "ohlcv-validator",
   version: "v0.1.0",
@@ -125,6 +131,7 @@ export const ohlcv = {
 
 export const products = [
   {
+    slug: "mach",
     line: "03",
     name: "Mach",
     lang: "Python",
@@ -136,6 +143,7 @@ export const products = [
     href: `${github}/bird_mach`,
   },
   {
+    slug: "akhil-skills",
     line: "04",
     name: "akhil-skills",
     lang: "Python",
@@ -147,6 +155,7 @@ export const products = [
     href: `${github}/akhil-skills`,
   },
   {
+    slug: "isaacxakhil",
     line: "05",
     name: "IsacxAkhil",
     lang: "Python · Rust",
@@ -160,10 +169,10 @@ export const products = [
 ];
 
 export const lineBoard = [
-  { line: "01", name: "EDITH", status: "building" as Status },
-  { line: ohlcv.line, name: ohlcv.name, status: "shipped" as Status },
-  ...products.map(({ line, name, status }) => ({ line, name, status })),
-  { line: "06", name: "Next build", status: "queued" as Status },
+  { line: "01", name: "EDITH", status: "building" as Status, slug: edith.slug },
+  { line: ohlcv.line, name: ohlcv.name, status: "shipped" as Status, slug: ohlcv.slug },
+  ...products.map(({ line, name, status, slug }) => ({ line, name, status, slug })),
+  { line: "06", name: "Next build", status: "queued" as Status, slug: undefined },
 ];
 
 export const process = [

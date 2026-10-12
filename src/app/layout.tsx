@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,7 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Akhil Singh",
+  title: {
+    default: "Akhil Singh",
+    template: "%s · Akhil Singh",
+  },
   description:
     "AI systems, low-latency infrastructure and developer tools. Home of EDITH and ohlcv-validator.",
   // Link-only site: keep it out of search results. public/_headers sends the
@@ -27,7 +32,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <div className="relative z-10 flex flex-1 flex-col">
+          <SiteHeader />
+          <main className="flex flex-1 flex-col">{children}</main>
+          <SiteFooter />
+        </div>
+      </body>
     </html>
   );
 }
