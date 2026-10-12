@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CaseStudySections, ProblemBlock } from "@/components/case-study";
 import { PanelHeader, StatusPill } from "@/components/hud";
 import { EdithDetail } from "@/components/project-edith";
 import { OhlcvDetail } from "@/components/project-ohlcv";
-import { edith, ohlcv, products } from "@/content";
+import { caseStudies, edith, ohlcv, products } from "@/content";
 
 const projects = [edith, ohlcv, ...products];
 
@@ -107,6 +108,7 @@ function renderProjectDetail(slug: string) {
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
+  const study = caseStudies[slug];
 
   return (
     <>
@@ -119,6 +121,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </Link>
       </div>
       {renderProjectDetail(slug)}
+      {study && <ProblemBlock study={study} />}
+      {study && <CaseStudySections study={study} />}
     </>
   );
 }
